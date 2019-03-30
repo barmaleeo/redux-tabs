@@ -18,13 +18,18 @@ export default class ReduxTabs extends Component {
       className: "redux-tabs-outher"
     }, React.createElement("ul", {
       className: "nav nav-tabs"
-    }, p.children.map((c, n) => React.createElement("li", {
+    }, p && (typeof p.children instanceof Array ? p.children.map((c, n) => React.createElement("li", {
       key: n,
       className: parseInt(p.active) === n ? 'active' : null
     }, React.createElement("a", {
       href: "/#",
       onClick: this.handleClickTab.bind(this, n)
-    }, c.props.name)))), React.createElement("div", p.contentProps, p.children[p.active]));
+    }, c.props.name))) : p && p.children && React.createElement("li", {
+      className: 'active'
+    }, React.createElement("a", {
+      href: "/#",
+      onClick: this.handleClickTab.bind(this, 0)
+    }, p.children.props.name)))), React.createElement("div", p.contentProps, p.children && p.children.length > p.active ? p.children[p.active] : null));
   }
 
 }
