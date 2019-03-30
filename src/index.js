@@ -19,7 +19,13 @@ class App extends Component {
 
                     <ReduxTabsContent name="first tab">first tab content</ReduxTabsContent>
 
-                    <ReduxTabsContent name="second tab">second tab content</ReduxTabsContent>
+                    <ReduxTabsContent name="second tab">
+                        <div>first row</div>
+                        second tab content
+                        <div>third row</div>
+
+                    </ReduxTabsContent>
+                    <ReduxTabsContent name="empty tag"/>
 
                     <ReduxTabsContent name="third tab">third tab content</ReduxTabsContent>
 

@@ -6,7 +6,7 @@ import React, {Component} from 'react';
 export default class ReduxTabs extends Component {
     handleClickTab = (n, e) => {
         this.props.onClick(n, this);
-        e.stopPropagation();
+        e.preventDefault();
     };
 
     renderChildren(){

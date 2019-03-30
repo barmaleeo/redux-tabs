@@ -8,7 +8,7 @@ export default class ReduxTabs extends Component {
 
     _defineProperty(this, "handleClickTab", (n, e) => {
       this.props.onClick(n, this);
-      e.stopPropagation();
+      e.preventDefault();
     });
   }
 
