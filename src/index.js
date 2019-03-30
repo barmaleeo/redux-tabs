@@ -1,12 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import React,{Component} from 'react';
+import { render } from "react-dom";
+import ReduxTabs from "./lib/ReduxTabs";
+import ReduxTabsContent from "./lib/ReduxTabsContent";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+//const App = () => (
+
+class App extends Component {
+    state = {tab:0};
+    render() {
+        return (
+            <div style={{width: 640, margin: "15px auto"}}>
+                <h1>ReduxTabs test</h1>
+
+                <ReduxTabs active={this.state.tab}
+                           onClick={(tab) => {this.setState({tab:tab})}}
+                           contentProps={{style: {background: '#eefffa'}}}>
+
+                    <ReduxTabsContent name="first tab">first tab content</ReduxTabsContent>
+
+                    <ReduxTabsContent name="second tab">second tab content</ReduxTabsContent>
+
+                    <ReduxTabsContent name="third tab">third tab content</ReduxTabsContent>
+
+                </ReduxTabs>
+
+            </div>
+        )
+    }
+}
+
+render(<App />, document.getElementById("root"));
