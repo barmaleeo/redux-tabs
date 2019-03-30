@@ -4,3 +4,4 @@
 /package-lock.json
 /yarn.lock
 /node_modules/
+/src/lib/__snapshots__/
