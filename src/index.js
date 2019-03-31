@@ -19,7 +19,7 @@ class App extends Component {
 
                     <ReduxTabsContent name="first tab">first tab content</ReduxTabsContent>
 
-                    <ReduxTabsContent name="second tab">
+                    <ReduxTabsContent name="second tab" className="tab-custom-class">
                         <div>first row</div>
                         second tab content
                         <div>third row</div>
@@ -31,6 +31,8 @@ class App extends Component {
 
                 </ReduxTabs>
 
+                <div style={{height:'20px', width:'100%'}}/>
+
                 <ReduxTabs active={this.state.tab}
                            onClick={(tab) => {this.setState({tab:tab})}}
                            contentProps={{style: {background: '#eefffa'}}}>
@@ -38,6 +40,8 @@ class App extends Component {
                     <ReduxTabsContent name="first tab">first tab content</ReduxTabsContent>
 
                 </ReduxTabs>
+
+                <div style={{height:'20px', width:'100%'}}/>
 
                <ReduxTabs active={this.state.tab}
                            onClick={(tab) => {this.setState({tab:tab})}}
