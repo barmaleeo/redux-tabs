@@ -21,14 +21,14 @@ export default class ReduxTabs extends Component {
       if (p.children instanceof Array) {
         return p.children.map((c, n) => React.createElement("li", {
           key: n,
-          className: (c.props.className ? c.props.className + ' ' : '') + (parseInt(p.active) === n ? 'active' : '')
+          className: 'nav-link ' + (c.props.className ? c.props.className + ' ' : '') + (parseInt(p.active) === n ? 'active' : '')
         }, React.createElement("a", {
           href: "/#",
           onClick: this.handleClickTab.bind(this, n)
         }, c.props.name)));
       } else {
         return React.createElement("li", {
-          className: (p.children.props.className ? p.children.props.className + ' ' : '') + 'active'
+          className: 'nav-link ' + (p.children.props.className ? p.children.props.className + ' ' : '') + 'active'
         }, React.createElement("a", {
           href: "/#",
           onClick: this.handleClickTab.bind(this, 0)

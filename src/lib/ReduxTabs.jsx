@@ -15,13 +15,13 @@ export default class ReduxTabs extends Component {
         if(p && p.children){
             if(p.children instanceof Array){
                 return (p.children.map((c,n) => (
-                    <li key={n} className={(c.props.className?c.props.className+ ' ':'') +
+                    <li key={n} className={'nav-link '+(c.props.className?c.props.className+ ' ':'') +
                         (parseInt(p.active)===n?'active':'')}>
                         <a href="/#" onClick={this.handleClickTab.bind(this, n)}>{c.props.name}</a>
                     </li>)))
             }else{
                 return (
-                    <li className={(p.children.props.className?p.children.props.className+' ':'') + 'active'}>
+                    <li className={'nav-link ' + (p.children.props.className?p.children.props.className+' ':'') + 'active'}>
                         <a href="/#" onClick={this.handleClickTab.bind(this, 0)}>{p.children.props.name}</a>
                     </li>
                 )
