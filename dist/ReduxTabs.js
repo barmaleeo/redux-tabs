@@ -22,12 +22,11 @@ export default class ReduxTabs extends Component {
       const aBase = p.bs4 ? 'nav-link' : '';
 
       if (p.children instanceof Array) {
-        const active = parseInt(p.active) === n ? ' active' : '';
         return p.children.map((c, n) => React.createElement("li", {
           key: n,
-          className: liBase + (c.props.className ? c.props.className : '') + (p.bs4 ? '' : active)
+          className: liBase + (c.props.className ? c.props.className : '') + (p.bs4 ? '' : parseInt(p.active) === n ? ' active' : '')
         }, React.createElement("a", {
-          className: aBase + (p.bs4 ? active : ''),
+          className: aBase + (p.bs4 ? parseInt(p.active) === n ? ' active' : '' : ''),
           href: "/#",
           onClick: this.handleClickTab.bind(this, n)
         }, c.props.name)));

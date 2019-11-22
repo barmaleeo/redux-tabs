@@ -18,10 +18,10 @@ export default class ReduxTabs extends Component {
 
 
             if(p.children instanceof Array){
-                const active = (parseInt(p.active)===n?' active':'');
                 return (p.children.map((c,n) => (
-                    <li key={n} className={liBase + (c.props.className?c.props.className:'') + (p.bs4?'':active)}>
-                        <a className={aBase + (p.bs4?active:'')}
+                    <li key={n} className={liBase + (c.props.className?c.props.className:'') +
+                                (p.bs4?'':(parseInt(p.active)===n?' active':''))}>
+                        <a className={aBase + (p.bs4?(parseInt(p.active)===n?' active':''):'')}
                            href="/#" onClick={this.handleClickTab.bind(this, n)}>{c.props.name}</a>
                     </li>)))
             }else{
