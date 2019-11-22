@@ -16,15 +16,18 @@ export default class ReduxTabs extends Component {
             const liBase = 'nav-'+(p.bs4?'item':'link')+' ';
             const aBase = p.bs4?'nav-link':'';
             if(p.children instanceof Array){
+
                 return (p.children.map((c,n) => (
-                    <li key={n} className={liBase +(c.props.className?c.props.className+ ' ':'') +
-                        (parseInt(p.active)===n?'active':'')}>
-                        <a className={aBase} href="/#" onClick={this.handleClickTab.bind(this, n)}>{c.props.name}</a>
+                    <li key={n} className={liBase}>
+                        <a className={aBase + (c.props.className?c.props.className+ ' ':'') +
+                        (parseInt(p.active)===n?'active':'')}
+                           href="/#" onClick={this.handleClickTab.bind(this, n)}>{c.props.name}</a>
                     </li>)))
             }else{
                 return (
-                    <li className={liBase + (p.children.props.className?p.children.props.className+' ':'') + 'active'}>
-                        <a className={aBase} href="/#" onClick={this.handleClickTab.bind(this, 0)}>{p.children.props.name}</a>
+                    <li className={liBase}>
+                        <a className={aBase + (p.children.props.className?p.children.props.className+' ':'') + 'active'}
+                           href="/#" onClick={this.handleClickTab.bind(this, 0)}>{p.children.props.name}</a>
                     </li>
                 )
             }
