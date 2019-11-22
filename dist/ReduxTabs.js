@@ -20,22 +20,22 @@ export default class ReduxTabs extends Component {
     if (p && p.children) {
       const liBase = 'nav-' + (p.bs4 ? 'item' : 'link') + ' ';
       const aBase = p.bs4 ? 'nav-link' : '';
-      const active = parseInt(p.active) === n ? 'active' : '';
 
       if (p.children instanceof Array) {
+        const active = parseInt(p.active) === n ? ' active' : '';
         return p.children.map((c, n) => React.createElement("li", {
           key: n,
-          className: liBase + (c.props.className ? c.props.className + ' ' : '') + (p.bs4 ? '' : active)
+          className: liBase + (c.props.className ? c.props.className : '') + (p.bs4 ? '' : active)
         }, React.createElement("a", {
-          className: aBase + (p.bs4 ? ' ' + active : ''),
+          className: aBase + (p.bs4 ? active : ''),
           href: "/#",
           onClick: this.handleClickTab.bind(this, n)
         }, c.props.name)));
       } else {
         return React.createElement("li", {
-          className: liBase + (p.children.props.className ? p.children.props.className + ' ' : '') + (p.bs4 ? '' : active)
+          className: liBase + (p.children.props.className ? p.children.props.className : '') + (p.bs4 ? '' : ' active')
         }, React.createElement("a", {
-          className: aBase + (p.bs4 ? ' ' + active : ''),
+          className: aBase + (p.bs4 ? ' active' : ''),
           href: "/#",
           onClick: this.handleClickTab.bind(this, 0)
         }, p.children.props.name));
