@@ -2,8 +2,20 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import React, { Component } from 'react'; //import './ReduxTabsStyle';
+import React, { Component } from 'react';
+import styled from 'styled-components'; //import './ReduxTabsStyle';
 
+const ReduxTabsStyled = styled.div`
+    &.full-height{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        >div{
+          flex:1;
+          overflow-y: auto;
+        }
+    }
+`;
 export default class ReduxTabs extends Component {
   constructor(...args) {
     super(...args);
@@ -60,8 +72,8 @@ export default class ReduxTabs extends Component {
       }
     }
 
-    return React.createElement("div", {
-      className: "redux-tabs-outher"
+    return React.createElement(ReduxTabsStyled, {
+      className: 'redux-tabs-outher' + (p.fullHeight ? ' full-height' : '')
     }, React.createElement("ul", {
       className: "nav nav-tabs"
     }, this.renderChildren()), React.createElement("div", _extends({}, p.contentProps, {

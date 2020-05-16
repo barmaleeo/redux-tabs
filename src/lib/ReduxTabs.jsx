@@ -1,7 +1,18 @@
 import React, {Component} from 'react';
+import styled from 'styled-components'
 
 //import './ReduxTabsStyle';
-
+const ReduxTabsStyled = styled.div`
+    &.full-height{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        >div{
+          flex:1;
+          overflow-y: auto;
+        }
+    }
+`
 
 export default class ReduxTabs extends Component {
     handleClickTab = (n, e) => {
@@ -51,14 +62,14 @@ export default class ReduxTabs extends Component {
             }
         }
         return (
-            <div className="redux-tabs-outher">
+            <ReduxTabsStyled className={'redux-tabs-outher' + (p.fullHeight?' full-height':'')}>
                 <ul className="nav nav-tabs">
                     {this.renderChildren()}
                 </ul>
                 <div {...p.contentProps} className={className}>
                     {content}
                 </div>
-            </div>
+            </ReduxTabsStyled>
         )
     }
 }
