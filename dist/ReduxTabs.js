@@ -140,7 +140,7 @@ var ReduxTabs = /*#__PURE__*/function (_Component) {
           for (_iterator.s(); !(_step = _iterator.n()).done;) {
             var c = _step.value;
 
-            if (c.token === p.active) {
+            if (c.props.token === p.active) {
               content = c;
               break;
             }

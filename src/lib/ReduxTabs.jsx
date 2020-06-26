@@ -57,7 +57,7 @@ export default class ReduxTabs extends Component {
         let className;
         if(p.children instanceof Array) {
             for(const c of p.children){
-                if(c.token === p.active){
+                if(c.props.token === p.active){
                     content = c;
                     break;
                 }
