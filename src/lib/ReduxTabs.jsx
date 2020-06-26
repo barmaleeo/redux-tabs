@@ -29,17 +29,20 @@ export default class ReduxTabs extends Component {
 
 
             if(p.children instanceof Array){
-                return (p.children.map((c,n) => (
-                    <li key={n} className={liBase + (c.props.className?c.props.className:'') +
-                                (p.bs4?'':(parseInt(p.active)===n?' active':''))}>
-                        <a className={aBase + (p.bs4?(parseInt(p.active)===n?' active':''):'')}
-                           href="/#" onClick={this.handleClickTab.bind(this, n)}>{c.props.name}</a>
-                    </li>)))
+                return (p.children.map((c,n) => {
+                    const name = (c.token ?? n).toString();
+                    return (
+                        <li key={n} className={liBase + (c.props.className?c.props.className:'') +
+                                    (p.bs4?'':(p.active.toString()===name?' active':''))}>
+                            <a className={aBase + (p.bs4?(p.active.toString()===name?' active':''):'')}
+                               href="/#" onClick={this.handleClickTab.bind(this, name)}>{c.props.name}</a>
+                        </li>)
+                }))
             }else{
                 return (
                     <li className={liBase + (p.children.props.className?p.children.props.className:'') + (p.bs4?'':' active')}>
                         <a className={aBase + (p.bs4?' active':'')}
-                           href="/#" onClick={this.handleClickTab.bind(this, 0)}>{p.children.props.name}</a>
+                           href="/#" onClick={e=>{e.preventDefault()}}>{p.children.props.name}</a>
                     </li>
                 )
             }
@@ -53,8 +56,16 @@ export default class ReduxTabs extends Component {
         let content;
         let className;
         if(p.children instanceof Array) {
-            content = p.children[p.active];
-            className = p.children[p.active].props.className;
+            for(const c of p.children){
+                if(c.token === p.active){
+                    content = c;
+                    break;
+                }
+            }
+            if(!content) {
+                content = p.children[p.active];
+            }
+            className = content.props.className;
         }else{
             content = p.children;
             if(p.children) {

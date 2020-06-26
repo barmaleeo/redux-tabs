@@ -17,6 +17,12 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -92,13 +98,16 @@ var ReduxTabs = /*#__PURE__*/function (_Component) {
 
         if (p.children instanceof Array) {
           return p.children.map(function (c, n) {
+            var _c$token;
+
+            var name = ((_c$token = c.token) !== null && _c$token !== void 0 ? _c$token : n).toString();
             return /*#__PURE__*/_react.default.createElement("li", {
               key: n,
-              className: liBase + (c.props.className ? c.props.className : '') + (p.bs4 ? '' : parseInt(p.active) === n ? ' active' : '')
+              className: liBase + (c.props.className ? c.props.className : '') + (p.bs4 ? '' : p.active.toString() === name ? ' active' : '')
             }, /*#__PURE__*/_react.default.createElement("a", {
-              className: aBase + (p.bs4 ? parseInt(p.active) === n ? ' active' : '' : ''),
+              className: aBase + (p.bs4 ? p.active.toString() === name ? ' active' : '' : ''),
               href: "/#",
-              onClick: _this2.handleClickTab.bind(_this2, n)
+              onClick: _this2.handleClickTab.bind(_this2, name)
             }, c.props.name));
           });
         } else {
@@ -107,7 +116,9 @@ var ReduxTabs = /*#__PURE__*/function (_Component) {
           }, /*#__PURE__*/_react.default.createElement("a", {
             className: aBase + (p.bs4 ? ' active' : ''),
             href: "/#",
-            onClick: this.handleClickTab.bind(this, 0)
+            onClick: function onClick(e) {
+              e.preventDefault();
+            }
           }, p.children.props.name));
         }
       } else {
@@ -122,8 +133,29 @@ var ReduxTabs = /*#__PURE__*/function (_Component) {
       var className;
 
       if (p.children instanceof Array) {
-        content = p.children[p.active];
-        className = p.children[p.active].props.className;
+        var _iterator = _createForOfIteratorHelper(p.children),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var c = _step.value;
+
+            if (c.token === p.active) {
+              content = c;
+              break;
+            }
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+
+        if (!content) {
+          content = p.children[p.active];
+        }
+
+        className = content.props.className;
       } else {
         content = p.children;
 
