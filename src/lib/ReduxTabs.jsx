@@ -15,8 +15,8 @@ const ReduxTabsStyled = styled.div`
 `
 
 export default class ReduxTabs extends Component {
-    handleClickTab = (n, e) => {
-        this.props.onClick(n, this);
+    handleClickTab = (n, name, e) => {
+        this.props.onClick(n,  this, name);
         e.preventDefault();
     };
 
@@ -35,7 +35,7 @@ export default class ReduxTabs extends Component {
                         <li key={n} className={liBase + (c.props.className?c.props.className:'') +
                                     (p.bs4?'':(p.active.toString()===name?' active':''))}>
                             <a className={aBase + (p.bs4?(p.active.toString()===name?' active':''):'')}
-                               href="/#" onClick={this.handleClickTab.bind(this, name)}>{c.props.name}</a>
+                               href="/#" onClick={this.handleClickTab.bind(this, name, c.props.name ?? '')}>{c.props.name}</a>
                         </li>)
                 }))
             }else{

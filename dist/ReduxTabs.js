@@ -76,8 +76,8 @@ var ReduxTabs = /*#__PURE__*/function (_Component) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty(_assertThisInitialized(_this), "handleClickTab", function (n, e) {
-      _this.props.onClick(n, _assertThisInitialized(_this));
+    _defineProperty(_assertThisInitialized(_this), "handleClickTab", function (n, name, e) {
+      _this.props.onClick(n, _assertThisInitialized(_this), name);
 
       e.preventDefault();
     });
@@ -98,7 +98,7 @@ var ReduxTabs = /*#__PURE__*/function (_Component) {
 
         if (p.children instanceof Array) {
           return p.children.map(function (c, n) {
-            var _c$token;
+            var _c$token, _c$props$name;
 
             var name = ((_c$token = c.token) !== null && _c$token !== void 0 ? _c$token : n).toString();
             return /*#__PURE__*/_react.default.createElement("li", {
@@ -107,7 +107,7 @@ var ReduxTabs = /*#__PURE__*/function (_Component) {
             }, /*#__PURE__*/_react.default.createElement("a", {
               className: aBase + (p.bs4 ? p.active.toString() === name ? ' active' : '' : ''),
               href: "/#",
-              onClick: _this2.handleClickTab.bind(_this2, name)
+              onClick: _this2.handleClickTab.bind(_this2, name, (_c$props$name = c.props.name) !== null && _c$props$name !== void 0 ? _c$props$name : '')
             }, c.props.name));
           });
         } else {
