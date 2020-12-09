@@ -15,6 +15,11 @@ class App extends Component {
 
                 <ReduxTabs active={this.state.tab}
                            onClick={(tab) => {this.setState({tab:tab})}}
+                           rightAddon={
+                               inst => <li>
+                                   Setup
+                               </li>
+                           }
                            contentProps={{style: {background: '#eefffa'}}}>
 
                     <ReduxTabsContent name="first tab">first tab content</ReduxTabsContent>

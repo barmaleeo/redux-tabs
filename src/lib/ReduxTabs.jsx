@@ -12,6 +12,13 @@ const ReduxTabsStyled = styled.div`
           overflow-y: auto;
         }
     }
+    ul{
+      display: flex;
+      align-items: center;
+      li.n-t-spacer{
+        flex: 1;
+      }
+    }
 `
 
 export default class ReduxTabs extends Component {
@@ -76,6 +83,10 @@ export default class ReduxTabs extends Component {
             <ReduxTabsStyled className={'redux-tabs-outher' + (p.fullHeight?' full-height':'')}>
                 <ul className="nav nav-tabs">
                     {this.renderChildren()}
+                    {typeof p.rightAddon === 'function' && <li className="n-t-spacer"/>}
+                    {typeof p.rightAddon === 'function' ?
+                        p.rightAddon(this) : null
+                    }
                 </ul>
                 <div {...p.contentProps} className={className}>
                     {content}
