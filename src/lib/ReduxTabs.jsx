@@ -12,7 +12,7 @@ const ReduxTabsStyled = styled.div`
           overflow-y: auto;
         }
     }
-    ul{
+    >ul{
       display: flex;
       align-items: center;
       li.n-t-spacer{
