@@ -1,29 +1,24 @@
 {
   "name": "redux-tabs",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "main": "dist/ReduxTabs.js",
   "module": "dist/ReduxTabs.js",
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@babel/preset-env": "^7.9.6",
-    "styled-components": "^5.1.0"
-  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "^3.4.1",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "styled-components": "^5.1.0"
   },
-  "peerDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
-  },
+  "peerDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build-examples": "react-scripts build",
