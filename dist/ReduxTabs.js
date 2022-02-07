@@ -98,9 +98,9 @@ var ReduxTabs = /*#__PURE__*/function (_Component) {
 
         if (p.children instanceof Array) {
           return p.children.map(function (c, n) {
-            var _c$token, _c$props$name;
+            var _c$props$token, _c$props$name;
 
-            var name = ((_c$token = c.token) !== null && _c$token !== void 0 ? _c$token : n).toString();
+            var name = ((_c$props$token = c.props.token) !== null && _c$props$token !== void 0 ? _c$props$token : n).toString();
             return /*#__PURE__*/_react.default.createElement("li", {
               key: n,
               className: liBase + (c.props.className ? c.props.className : '') + (p.bs4 ? '' : p.active.toString() === name ? ' active' : '')

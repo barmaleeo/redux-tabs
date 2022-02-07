@@ -37,7 +37,7 @@ export default class ReduxTabs extends Component {
 
             if(p.children instanceof Array){
                 return (p.children.map((c,n) => {
-                    const name = (c.token ?? n).toString();
+                    const name = (c.props.token ?? n).toString();
                     return (
                         <li key={n} className={liBase + (c.props.className?c.props.className:'') +
                                     (p.bs4?'':(p.active.toString()===name?' active':''))}>
