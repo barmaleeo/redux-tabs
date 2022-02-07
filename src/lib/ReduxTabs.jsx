@@ -70,7 +70,7 @@ export default class ReduxTabs extends Component {
                 }
             }
             if(!content) {
-                content = p.children[p.active];
+                content = p.children[0];
             }
             className = content.props.className;
         }else{

@@ -1,6 +1,6 @@
 {
   "name": "redux-tabs",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "main": "dist/ReduxTabs.js",
   "module": "dist/ReduxTabs.js",
   "files": [

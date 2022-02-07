@@ -152,7 +152,7 @@ var ReduxTabs = /*#__PURE__*/function (_Component) {
         }
 
         if (!content) {
-          content = p.children[p.active];
+          content = p.children[0];
         }
 
         className = content.props.className;
