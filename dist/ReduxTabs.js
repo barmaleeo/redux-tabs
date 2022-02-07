@@ -133,6 +133,12 @@ var ReduxTabs = /*#__PURE__*/function (_Component) {
       var className;
 
       if (p.children instanceof Array) {
+        if (p.children.length === 0) {
+          content = null;
+        } else if (p.children.length === 1) {
+          content = p.children[0];
+        }
+
         var _iterator = _createForOfIteratorHelper(p.children),
             _step;
 
@@ -151,11 +157,9 @@ var ReduxTabs = /*#__PURE__*/function (_Component) {
           _iterator.f();
         }
 
-        if (!content) {
-          content = p.children[0];
+        if (content) {
+          className = content.props.className;
         }
-
-        className = content.props.className;
       } else {
         content = p.children;
 
